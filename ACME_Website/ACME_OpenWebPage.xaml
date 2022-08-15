@@ -67,6 +67,7 @@
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="- Description : Open Acme Web Page&#xA;- PreCondition : N/A&#xA;- PostCondition : Open Login Page Success&#xA;- Section : 1.1" DisplayName="ACME_OpenWebPage" sap:VirtualizedContainerService.HintSize="997.6,2102.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -79,7 +80,7 @@
     <ui:LogMessage DisplayName="Log Message - Start WorkFlow" sap:VirtualizedContainerService.HintSize="956,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Open ACME Web Page ... Start&quot;]" />
     <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="956,1668" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="919.2,1413.6" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[CInt(in_ConfigFile(&quot;Retry_Num&quot;).ToString)]">
+        <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="919.2,1413.6" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[CInt(in_ConfigFile(&quot;Retry_Num&quot;).ToString)]" RetryInterval="[TimeSpan.Parse(in_ConfigFile(&quot;Retry_Interval&quot;).ToString)]">
           <ui:RetryScope.ActivityBody>
             <ActivityAction>
               <Sequence DisplayName="Open Acme" sap:VirtualizedContainerService.HintSize="877.6,1237.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
@@ -109,10 +110,7 @@
                           <ui:MinimizeWindow Window="{x:Null}" DisplayName="Minimize Window" sap:VirtualizedContainerService.HintSize="333.6,22.4" sap2010:WorkflowViewState.IdRef="MinimizeWindow_1" />
                           <ui:Activate DelayBefore="{x:Null}" DelayMS="{x:Null}" DisplayName="Activate 'msedge.exe ACME'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Activate_1">
                             <ui:Activate.Target>
-                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="4350f2a7-d4db-4a68-83aa-879d921d0934" InformativeScreenshot="468ca23155407c1ed9ff82bc5d6933f6">
-                                <ui:Target.TimeoutMS>
-                                  <InArgument x:TypeArguments="x:Int32" />
-                                </ui:Target.TimeoutMS>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="4350f2a7-d4db-4a68-83aa-879d921d0934" InformativeScreenshot="468ca23155407c1ed9ff82bc5d6933f6" TimeoutMS="[CInt(in_ConfigFile(&quot;TimeOut_Short&quot;).ToString)]">
                                 <ui:Target.WaitForReady>
                                   <InArgument x:TypeArguments="ui:WaitForReady" />
                                 </ui:Target.WaitForReady>
@@ -135,10 +133,7 @@
                   </sap:WorkflowViewStateService.ViewState>
                   <ui:UiElementExists DisplayName="Element Exists 'Login'" Exists="[bool_PostCondition]" sap:VirtualizedContainerService.HintSize="794.4,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
                     <ui:UiElementExists.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="cc0cdd2a-d34c-46e5-b748-1b75b34b155b" InformativeScreenshot="7899f5ec676fc8b38e762693c363b4bf" Selector="&lt;html app='chrome.exe' title='ACME System 1*' /&gt;&lt;webctrl tag='A' /&gt;">
-                        <ui:Target.TimeoutMS>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:Target.TimeoutMS>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="cc0cdd2a-d34c-46e5-b748-1b75b34b155b" InformativeScreenshot="7899f5ec676fc8b38e762693c363b4bf" Selector="&lt;html app='chrome.exe' title='ACME System 1*' /&gt;&lt;webctrl tag='A' /&gt;" TimeoutMS="[CInt(in_ConfigFile(&quot;TimeOut_Short&quot;).ToString)]">
                         <ui:Target.WaitForReady>
                           <InArgument x:TypeArguments="ui:WaitForReady" />
                         </ui:Target.WaitForReady>

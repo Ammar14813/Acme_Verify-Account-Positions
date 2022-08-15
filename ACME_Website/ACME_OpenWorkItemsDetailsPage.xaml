@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1410.4,2936.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>987.2,2936.8</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -66,6 +66,7 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="- Description : Open Work Items Details Page&#xA;- PreCondition : Acme Web Open&#xA;- PostCondition : Work Items Details Open Success&#xA;- Section : " DisplayName="ACME_OpenWorkItemsDetailsPage" sap:VirtualizedContainerService.HintSize="997.6,2872" sap2010:WorkflowViewState.IdRef="Sequence_11">
@@ -78,7 +79,7 @@
     <ui:LogMessage DisplayName="Log Message - Start WorkFlow" sap:VirtualizedContainerService.HintSize="956,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Open Work Items Details Page ... Start&quot;]" />
     <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="956,2437.6" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="919.2,2183.2" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[CInt(in_ConfigFile(&quot;Retry_Num&quot;).ToString)]">
+        <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="919.2,2183.2" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[CInt(in_ConfigFile(&quot;Retry_Num&quot;).ToString)]" RetryInterval="[TimeSpan.Parse(in_ConfigFile(&quot;Retry_Interval&quot;).ToString)]">
           <ui:RetryScope.ActivityBody>
             <ActivityAction>
               <Sequence DisplayName="Open Work Items Details Page" sap:VirtualizedContainerService.HintSize="877.6,2007.2" sap2010:WorkflowViewState.IdRef="Sequence_8">
@@ -98,10 +99,7 @@
                   </sap:WorkflowViewStateService.ViewState>
                   <ui:UiElementExists DisplayName="Element Exists 'PreCondition'" Exists="[bool_PreCondition]" sap:VirtualizedContainerService.HintSize="794.4,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
                     <ui:UiElementExists.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="cc0cdd2a-d34c-46e5-b748-1b75b34b155b" InformativeScreenshot="5a2bf60dc4bdf6ad95da6eb65939a6dc" Selector="&lt;html app='chrome.exe' title='ACME System 1 *' /&gt;&lt;webctrl aaname='Log Out' tag='A' parentclass='nav navbar-nav navbar-right' /&gt;">
-                        <ui:Target.TimeoutMS>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:Target.TimeoutMS>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="cc0cdd2a-d34c-46e5-b748-1b75b34b155b" InformativeScreenshot="5a2bf60dc4bdf6ad95da6eb65939a6dc" Selector="&lt;html app='chrome.exe' title='ACME System 1 *' /&gt;&lt;webctrl aaname='Log Out' tag='A' parentclass='nav navbar-nav navbar-right' /&gt;" TimeoutMS="[CInt(in_ConfigFile(&quot;TimeOut_Short&quot;).ToString)]">
                         <ui:Target.WaitForReady>
                           <InArgument x:TypeArguments="ui:WaitForReady" />
                         </ui:Target.WaitForReady>
@@ -138,7 +136,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'chrome.exe ACME'" sap:VirtualizedContainerService.HintSize="433.6,447.2" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="48b2d78b2ef2cd56559fd44fb4f57c07" Selector="&lt;html app='chrome.exe' title='ACME System 1*' /&gt;">
+                  <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'chrome.exe ACME'" sap:VirtualizedContainerService.HintSize="433.6,447.2" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="48b2d78b2ef2cd56559fd44fb4f57c07" Selector="&lt;html app='chrome.exe' title='ACME System 1*' /&gt;" TimeoutMS="[CInt(in_ConfigFile(&quot;TimeOut_Short&quot;).ToString)]">
                     <ui:BrowserScope.Body>
                       <ActivityAction x:TypeArguments="x:Object">
                         <ActivityAction.Argument>
@@ -152,10 +150,7 @@
                           </sap:WorkflowViewStateService.ViewState>
                           <ui:Activate DelayBefore="{x:Null}" DelayMS="{x:Null}" DisplayName="Activate 'chrome.exe ACME'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Activate_1">
                             <ui:Activate.Target>
-                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="b28ac473-e978-4add-be41-aa6b90cca7d3" InformativeScreenshot="d08dcb915390db0526fae9526914077a">
-                                <ui:Target.TimeoutMS>
-                                  <InArgument x:TypeArguments="x:Int32" />
-                                </ui:Target.TimeoutMS>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="b28ac473-e978-4add-be41-aa6b90cca7d3" InformativeScreenshot="d08dcb915390db0526fae9526914077a" TimeoutMS="[CInt(in_ConfigFile(&quot;TimeOut_Short&quot;).ToString)]">
                                 <ui:Target.WaitForReady>
                                   <InArgument x:TypeArguments="ui:WaitForReady" />
                                 </ui:Target.WaitForReady>
@@ -179,10 +174,7 @@
                   </sap:WorkflowViewStateService.ViewState>
                   <ui:UiElementExists DisplayName="Element Exists 'PostCondition'" Exists="[bool_PostCondition]" sap:VirtualizedContainerService.HintSize="794.4,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
                     <ui:UiElementExists.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="cc0cdd2a-d34c-46e5-b748-1b75b34b155b" InformativeScreenshot="46fda5cd194dbe121c0c0dd22d01c2e1" Selector="&lt;html app='chrome.exe' title='ACME System 1*' /&gt;&lt;webctrl aaname='Verify Account Positions' tag='DIV' /&gt;">
-                        <ui:Target.TimeoutMS>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:Target.TimeoutMS>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="cc0cdd2a-d34c-46e5-b748-1b75b34b155b" InformativeScreenshot="46fda5cd194dbe121c0c0dd22d01c2e1" Selector="&lt;html app='chrome.exe' title='ACME System 1*' /&gt;&lt;webctrl aaname='Verify Account Positions' tag='DIV' /&gt;" TimeoutMS="[CInt(in_ConfigFile(&quot;TimeOut_Short&quot;).ToString)]">
                         <ui:Target.WaitForReady>
                           <InArgument x:TypeArguments="ui:WaitForReady" />
                         </ui:Target.WaitForReady>

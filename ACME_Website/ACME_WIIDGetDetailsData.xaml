@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1410.4,3292</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1085.6,3392</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="27">
@@ -42,7 +42,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="50">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="28">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -69,9 +69,11 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="- Description : Get Client Id, Account Number And Account Amount&#xA;- PreCondition : Work Items Details Open Success&#xA;- PostCondition : Client Id, Account Number And Account Amount Get Success&#xA;- Section : " DisplayName="ACME_WIIDGetDetailsData" sap:VirtualizedContainerService.HintSize="997.6,3227.2" sap2010:WorkflowViewState.IdRef="Sequence_11">
+  <Sequence sap2010:Annotation.AnnotationText="- Description : Get Client Id, Account Number And Account Amount&#xA;- PreCondition : Work Items Details Open Success&#xA;- PostCondition : Client Id, Account Number And Account Amount Get Success&#xA;- Section : " DisplayName="ACME_WIIDGetDetailsData" sap:VirtualizedContainerService.HintSize="997.6,3327.2" sap2010:WorkflowViewState.IdRef="Sequence_11">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -79,14 +81,15 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message - Start WorkFlow" sap:VirtualizedContainerService.HintSize="956,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Search WIID To Get Client Id, Account Number And Account Amount ... Start&quot;]" />
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="956,2792.8" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="956,2892.8" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="919.2,2538.4" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[CInt(in_ConfigFile(&quot;Retry_Num&quot;).ToString)]">
+        <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="919.2,2638.4" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[CInt(in_ConfigFile(&quot;Retry_Num&quot;).ToString)]" RetryInterval="[TimeSpan.Parse(in_ConfigFile(&quot;Retry_Interval&quot;).ToString)]">
           <ui:RetryScope.ActivityBody>
             <ActivityAction>
-              <Sequence DisplayName="Search WIID To Get Client Id, Account Number And Account Amount" sap:VirtualizedContainerService.HintSize="877.6,2362.4" sap2010:WorkflowViewState.IdRef="Sequence_8">
+              <Sequence DisplayName="Search WIID To Get Client Id, Account Number And Account Amount" sap:VirtualizedContainerService.HintSize="877.6,2462.4" sap2010:WorkflowViewState.IdRef="Sequence_8">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="x:String" Name="str_AccountFullText" />
+                  <Variable x:TypeArguments="x:Boolean" Name="bool_DataEmpty" />
                 </Sequence.Variables>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -104,10 +107,7 @@
                   </sap:WorkflowViewStateService.ViewState>
                   <ui:UiElementExists DisplayName="Element Exists 'PreCondition'" Exists="[bool_PreCondition]" sap:VirtualizedContainerService.HintSize="794.4,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
                     <ui:UiElementExists.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="cc0cdd2a-d34c-46e5-b748-1b75b34b155b" InformativeScreenshot="46fda5cd194dbe121c0c0dd22d01c2e1" Selector="&lt;html app='chrome.exe' title='ACME System 1*' /&gt;&lt;webctrl aaname='Verify Account Positions' tag='DIV' /&gt;">
-                        <ui:Target.TimeoutMS>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:Target.TimeoutMS>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="cc0cdd2a-d34c-46e5-b748-1b75b34b155b" InformativeScreenshot="46fda5cd194dbe121c0c0dd22d01c2e1" Selector="&lt;html app='chrome.exe' title='ACME System 1*' /&gt;&lt;webctrl aaname='Verify Account Positions' tag='DIV' /&gt;" TimeoutMS="[CInt(in_ConfigFile(&quot;TimeOut_Short&quot;).ToString)]">
                         <ui:Target.WaitForReady>
                           <InArgument x:TypeArguments="ui:WaitForReady" />
                         </ui:Target.WaitForReady>
@@ -144,7 +144,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'chrome.exe ACME'" sap:VirtualizedContainerService.HintSize="433.6,347.2" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="48b2d78b2ef2cd56559fd44fb4f57c07" Selector="&lt;html app='chrome.exe' title='ACME System 1*' /&gt;">
+                  <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'chrome.exe ACME'" sap:VirtualizedContainerService.HintSize="433.6,347.2" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="48b2d78b2ef2cd56559fd44fb4f57c07" Selector="&lt;html app='chrome.exe' title='ACME System 1*' /&gt;" TimeoutMS="[CInt(in_ConfigFile(&quot;TimeOut_Short&quot;).ToString)]">
                     <ui:BrowserScope.Body>
                       <ActivityAction x:TypeArguments="x:Object">
                         <ActivityAction.Argument>
@@ -158,10 +158,7 @@
                           </sap:WorkflowViewStateService.ViewState>
                           <ui:GetFullText IgnoreHidden="{x:Null}" DisplayName="Get Full Text - Account Information Details" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="GetFullText_1">
                             <ui:GetFullText.Target>
-                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="963fc194-6fc9-47c5-800b-4f03018db180" InformativeScreenshot="b342a7da0f66f6edc2cad1eb1ce0f918" Selector="&lt;webctrl tag='DIV' innertext='                     Account Information Details                                              Client ID: *                         Account Number: *                         Account Amount: *                                                              ' /&gt;&lt;webctrl tag='P' /&gt;">
-                                <ui:Target.TimeoutMS>
-                                  <InArgument x:TypeArguments="x:Int32" />
-                                </ui:Target.TimeoutMS>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="963fc194-6fc9-47c5-800b-4f03018db180" InformativeScreenshot="b342a7da0f66f6edc2cad1eb1ce0f918" Selector="&lt;webctrl tag='DIV' innertext='                     Account Information Details                                              Client ID: *                         Account Number: *                         Account Amount: *                                                              ' /&gt;&lt;webctrl tag='P' /&gt;" TimeoutMS="[CInt(in_ConfigFile(&quot;TimeOut_Short&quot;).ToString)]">
                                 <ui:Target.WaitForReady>
                                   <InArgument x:TypeArguments="ui:WaitForReady" />
                                 </ui:Target.WaitForReady>
@@ -209,7 +206,7 @@
                   <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="433.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="Info" Message="[&quot;Account Number Is : &quot; + out_strAccountNumber.ToString]" />
                   <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="433.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Info" Message="[&quot;Account Amount Is : &quot; + out_strAccountAmount.ToString]" />
                 </Sequence>
-                <Sequence DisplayName="PostCondition" sap:VirtualizedContainerService.HintSize="836,500" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                <Sequence DisplayName="PostCondition" sap:VirtualizedContainerService.HintSize="836,600" sap2010:WorkflowViewState.IdRef="Sequence_7">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:Boolean" Name="bool_PostCondition" />
                   </Sequence.Variables>
@@ -218,7 +215,15 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <If Condition="[not (string.IsNullOrEmpty(out_strClientID) AndAlso string.IsNullOrEmpty(out_strAccountNumber) AndAlso string.IsNullOrEmpty(out_strAccountAmount))]" DisplayName="If - PostCondition" sap:VirtualizedContainerService.HintSize="794.4,407.2" sap2010:WorkflowViewState.IdRef="If_2">
+                  <Assign sap:VirtualizedContainerService.HintSize="794.4,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Boolean">[bool_DataEmpty]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Boolean">[string.IsNullOrEmpty(out_strClientID) AndAlso string.IsNullOrEmpty(out_strAccountNumber) AndAlso string.IsNullOrEmpty(out_strAccountAmount) andalso (Convert.ToDouble(out_strAccountAmount)&lt;&gt;0)]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <If Condition="[not bool_DataEmpty]" DisplayName="If - PostCondition" sap:VirtualizedContainerService.HintSize="794.4,407.2" sap2010:WorkflowViewState.IdRef="If_2">
                     <If.Then>
                       <Sequence DisplayName="Client Id, Account Number And Account Amount Get Success" sap:VirtualizedContainerService.HintSize="375.2,185.6" sap2010:WorkflowViewState.IdRef="Sequence_5">
                         <sap:WorkflowViewStateService.ViewState>

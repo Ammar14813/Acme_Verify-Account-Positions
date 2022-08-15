@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1410.4,2405.6</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1019.2,2559.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="28">
@@ -70,11 +70,11 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1029.6,2340.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1029.6,2494.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="str_WIIDNum" />
       <Variable x:TypeArguments="x:String" Name="str_ClientID" />
@@ -134,53 +134,35 @@
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_ConfigFile">[in_Config]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_strClientID">[str_ClientID]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_strAccountNumber">[str_AccountNumber]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_strAccountAmount">[str_AccountAmount]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ACME_DesktopApp_ClickClientAccount workflow" sap:VirtualizedContainerService.HintSize="988,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="ACME_DesktopApp\ACME_DesktopApp_ClickClientAccount.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_ConfigFile">[in_Config]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_strClientID">[str_ClientID]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_strAccountNumber">[str_AccountNumber]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_strAccountAmount">[str_AccountAmount]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ACME_DesktopApp_EnterClientAccount workflow" sap:VirtualizedContainerService.HintSize="988,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="ACME_DesktopApp\ACME_DesktopApp_EnterClientAccount.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_ConfigFile">[in_Config]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_strClientID">[str_ClientID]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_strAccountNumber">[str_AccountNumber]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_strAccountAmount">[str_AccountAmount]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ACME_DesktopApp_GetAllAmounts workflow" sap:VirtualizedContainerService.HintSize="988,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="ACME_DesktopApp\ACME_DesktopApp_GetAllAmounts.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_ConfigFile">
-          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_strClientID">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_ClientID" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_strAccountNumber">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_AccountNumber" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_strAccountAmount">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_AccountAmount" />
-        </InArgument>
-        <OutArgument x:TypeArguments="x:Double" x:Key="out_AmountSum">
-          <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="double_AmountSum" />
-        </OutArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_ConfigFile">[in_Config]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strAccountAmount">[str_AccountAmount]</InArgument>
+        <OutArgument x:TypeArguments="x:Double" x:Key="out_AmountSum">[double_AmountSum]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_strAccountNumber">[str_AccountNumber]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <If sap2010:Annotation.AnnotationText="If - the sum of all transactions in System 3 is equal to the Account amount in System 1" Condition="[double_AmountSum = Convert.ToDouble(str_AccountAmount)]" DisplayName="If " sap:VirtualizedContainerService.HintSize="988,568.8" sap2010:WorkflowViewState.IdRef="If_1">
+    <If sap2010:Annotation.AnnotationText="If - the sum of all transactions in System 3 is equal to the Account amount in System 1" Condition="[double_AmountSum = Convert.ToDouble(str_AccountAmount)]" DisplayName="If " sap:VirtualizedContainerService.HintSize="988,722.4" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="472,378.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence sap:VirtualizedContainerService.HintSize="472,532" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -202,16 +184,25 @@
                     <OutArgument x:TypeArguments="x:String">[str_CompletedOrRejected]</OutArgument>
                   </ui:AssignOperation.To>
                   <ui:AssignOperation.Value>
-                    <InArgument x:TypeArguments="x:String">Completed</InArgument>
+                    <InArgument x:TypeArguments="x:String">[in_Config("Completed").ToString]</InArgument>
                   </ui:AssignOperation.Value>
                 </ui:AssignOperation>
               </scg:List>
             </ui:MultipleAssign.AssignOperations>
           </ui:MultipleAssign>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ACME_ClickUpdateWorkItem workflow" sap:VirtualizedContainerService.HintSize="430.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="ACME_Website\ACME_ClickUpdateWorkItem.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_ConfigFile">
+                <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:Double" x:Key="in_AmountSum">
+                <mva:VisualBasicValue x:TypeArguments="x:Double" ExpressionText="double_AmountSum" />
+              </InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ACME_UpdateWorkItems workflow" sap:VirtualizedContainerService.HintSize="430.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="ACME_Website\ACME_UpdateWorkItems.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_ConfigFile">[in_Config]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_AmountSum">[double_AmountSum.ToString]</InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_strMatch">[str_Match]</InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_strCompletedOrRejected">[str_CompletedOrRejected]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
@@ -219,7 +210,7 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <Sequence sap:VirtualizedContainerService.HintSize="472,378.4" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence sap:VirtualizedContainerService.HintSize="472,532" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -241,16 +232,25 @@
                     <OutArgument x:TypeArguments="x:String">[str_CompletedOrRejected]</OutArgument>
                   </ui:AssignOperation.To>
                   <ui:AssignOperation.Value>
-                    <InArgument x:TypeArguments="x:String">Rejected</InArgument>
+                    <InArgument x:TypeArguments="x:String">[in_Config("Rejected").ToString]</InArgument>
                   </ui:AssignOperation.Value>
                 </ui:AssignOperation>
               </scg:List>
             </ui:MultipleAssign.AssignOperations>
           </ui:MultipleAssign>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ACME_ClickUpdateWorkItem workflow" sap:VirtualizedContainerService.HintSize="430.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="ACME_Website\ACME_ClickUpdateWorkItem.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_ConfigFile">
+                <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:Double" x:Key="in_AmountSum">
+                <mva:VisualBasicValue x:TypeArguments="x:Double" ExpressionText="double_AmountSum" />
+              </InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ACME_UpdateWorkItems workflow" sap:VirtualizedContainerService.HintSize="430.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="ACME_Website\ACME_UpdateWorkItems.xaml">
             <ui:InvokeWorkflowFile.Arguments>
               <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_ConfigFile">[in_Config]</InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_AmountSum">[double_AmountSum.ToString]</InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_strMatch">[str_Match]</InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="in_strCompletedOrRejected">[str_CompletedOrRejected]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
@@ -260,18 +260,7 @@
     </If>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ACME_DesktopApp_ControlClosingTabs workflow" sap:VirtualizedContainerService.HintSize="988,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="ACME_DesktopApp\ACME_DesktopApp_ControlClosingTabs.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_ConfigFile">
-          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_strClientID">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_ClientID" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_strAccountNumber">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_AccountNumber" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_strAccountAmount">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="str_AccountAmount" />
-        </InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_ConfigFile">[in_Config]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="988,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;End Process&quot;]" />

@@ -1,14 +1,11 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="Main" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_ConfigFile" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
-    <x:Property Name="in_strClientID" Type="InArgument(x:String)" />
-    <x:Property Name="in_strAccountNumber" Type="InArgument(x:String)" />
-    <x:Property Name="in_strAccountAmount" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1163.2,3296.8</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1240.8,4126.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="28">
@@ -71,32 +68,36 @@
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="- Description : Control Closing Tabs&#xA;- PreCondition : Account Movements Page Open Success&#xA;- PostCondition : First Page Open Success&#xA;- Section : " DisplayName="ACME_DesktopApp_ControlClosingTabs" sap:VirtualizedContainerService.HintSize="997.6,3232" sap2010:WorkflowViewState.IdRef="Sequence_11">
+  <Sequence sap2010:Annotation.AnnotationText="- Description : Control Closing Tabs&#xA;- PreCondition : Account Movements Page Open Success&#xA;- PostCondition : First Page Open Success&#xA;- Section : " DisplayName="ACME_DesktopApp_ControlClosingTabs" sap:VirtualizedContainerService.HintSize="1251.2,4061.6" sap2010:WorkflowViewState.IdRef="Sequence_11">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message - Start WorkFlow" sap:VirtualizedContainerService.HintSize="956,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Control Closing Tabs ... Start&quot;]" />
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="956,2797.6" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <ui:LogMessage DisplayName="Log Message - Start WorkFlow" sap:VirtualizedContainerService.HintSize="1209.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Control Closing Tabs ... Start&quot;]" />
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="1209.6,3627.2" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="919.2,2543.2" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[CInt(in_ConfigFile(&quot;Retry_Num&quot;).ToString)]">
+        <ui:RetryScope DisplayName="Retry Scope" sap:VirtualizedContainerService.HintSize="1172.8,3372.8" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[CInt(in_ConfigFile(&quot;Retry_Num&quot;).ToString)]" RetryInterval="[TimeSpan.Parse(in_ConfigFile(&quot;Retry_Interval&quot;).ToString)]">
           <ui:RetryScope.ActivityBody>
             <ActivityAction>
-              <Sequence DisplayName="Control Closing Tabs" sap:VirtualizedContainerService.HintSize="877.6,2367.2" sap2010:WorkflowViewState.IdRef="Sequence_8">
+              <Sequence DisplayName="Control Closing Tabs" sap:VirtualizedContainerService.HintSize="1131.2,3116.8" sap2010:WorkflowViewState.IdRef="Sequence_8">
                 <Sequence.Variables>
-                  <Variable x:TypeArguments="x:Int32" Default="0" Name="int_Counter" />
-                  <Variable x:TypeArguments="s:String[]" Default="[{&quot;ClientAccountMovemnets&quot;,&quot;ClientAccounts&quot;,&quot;ClientDetails&quot;,&quot;SearchingClient&quot;}]" Name="list_ControCloseTabs" />
+                  <Variable x:TypeArguments="x:Int32" Name="int_Counter">
+                    <Variable.Default>
+                      <Literal x:TypeArguments="x:Int32" />
+                    </Variable.Default>
+                  </Variable>
                 </Sequence.Variables>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Sequence DisplayName="PreCondition" sap:VirtualizedContainerService.HintSize="836,647.2" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                <Sequence DisplayName="PreCondition" sap:VirtualizedContainerService.HintSize="1089.6,647.2" sap2010:WorkflowViewState.IdRef="Sequence_25">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:Boolean" Name="bool_PreCondition" />
                   </Sequence.Variables>
@@ -107,10 +108,7 @@
                   </sap:WorkflowViewStateService.ViewState>
                   <ui:UiElementExists DisplayName="Element Exists 'PreCondition'" Exists="[bool_PreCondition]" sap:VirtualizedContainerService.HintSize="794.4,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_5">
                     <ui:UiElementExists.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="cc0cdd2a-d34c-46e5-b748-1b75b34b155b" InformativeScreenshot="8adf4caff15b17c59ae08c1643a87c45" Selector="&lt;wnd app='acme-system3.exe' ctrlname='ClientAccountMovemnets' /&gt;&lt;wnd ctrlname='label3' /&gt;">
-                        <ui:Target.TimeoutMS>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:Target.TimeoutMS>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="cc0cdd2a-d34c-46e5-b748-1b75b34b155b" InformativeScreenshot="8adf4caff15b17c59ae08c1643a87c45" Selector="&lt;wnd app='acme-system3.exe' ctrlname='ClientAccountMovemnets' /&gt;&lt;wnd ctrlname='label3' /&gt;" TimeoutMS="[CInt(in_ConfigFile(&quot;TimeOut_Short&quot;).ToString)]">
                         <ui:Target.WaitForReady>
                           <InArgument x:TypeArguments="ui:WaitForReady" />
                         </ui:Target.WaitForReady>
@@ -141,15 +139,15 @@
                     </If.Else>
                   </If>
                 </Sequence>
-                <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="836,900" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="1089.6,1649.6" sap2010:WorkflowViewState.IdRef="Sequence_31">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[int_Counter&lt;4]" DisplayName="While" sap:VirtualizedContainerService.HintSize="510.4,807.2" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_4">
+                  <ui:InterruptibleWhile CurrentIndex="{x:Null}" Condition="[int_Counter&lt;4]" DisplayName="While" sap:VirtualizedContainerService.HintSize="1048,1556.8" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_4">
                     <ui:InterruptibleWhile.Body>
-                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="475.2,640" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1012.8,1389.6" sap2010:WorkflowViewState.IdRef="Sequence_30">
                         <Sequence.Variables>
                           <Variable x:TypeArguments="x:String" Name="selector" />
                           <Variable x:TypeArguments="x:String" Name="str_CloseSelector" />
@@ -159,39 +157,32 @@
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <Assign sap:VirtualizedContainerService.HintSize="433.6,60" sap2010:WorkflowViewState.IdRef="Assign_6">
-                          <Assign.To>
-                            <OutArgument x:TypeArguments="x:String">[str_CloseSelector]</OutArgument>
-                          </Assign.To>
-                          <Assign.Value>
-                            <InArgument x:TypeArguments="x:String">[list_ControCloseTabs(int_Counter)]</InArgument>
-                          </Assign.Value>
-                        </Assign>
-                        <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'acme-system3.exe ACME'" sap:VirtualizedContainerService.HintSize="433.6,347.2" sap2010:WorkflowViewState.IdRef="WindowScope_2" InformativeScreenshot="8bde376b3f641aeb18037e077879f61c" Selector="[String.Format(&quot;&lt;wnd app='acme-system3.exe' title='ACME System 3' ctrlname='{0}' /&gt;&quot;, str_CloseSelector)]">
-                          <ui:WindowScope.Body>
+                        <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="971.2,1296.8" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[in_ConfigFile(&quot;ControCloseTabs&quot;).ToString.Split(&quot;,&quot;c)]">
+                          <ui:ForEach.Body>
                             <ActivityAction x:TypeArguments="x:Object">
                               <ActivityAction.Argument>
-                                <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                                <DelegateInArgument x:TypeArguments="x:Object" Name="Tab" />
                               </ActivityAction.Argument>
-                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,200" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="936,1172" sap2010:WorkflowViewState.IdRef="Sequence_34">
+                                <Sequence.Variables>
+                                  <Variable x:TypeArguments="x:Boolean" Name="bool_TabExist" />
+                                </Sequence.Variables>
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Close Tabs'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_11" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="False">
-                                  <ui:Click.CursorPosition>
-                                    <ui:CursorPosition Position="Center">
-                                      <ui:CursorPosition.OffsetX>
-                                        <InArgument x:TypeArguments="x:Int32" />
-                                      </ui:CursorPosition.OffsetX>
-                                      <ui:CursorPosition.OffsetY>
-                                        <InArgument x:TypeArguments="x:Int32" />
-                                      </ui:CursorPosition.OffsetY>
-                                    </ui:CursorPosition>
-                                  </ui:Click.CursorPosition>
-                                  <ui:Click.Target>
-                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="265b9fe1-b06e-4d73-a913-946d38534685" InformativeScreenshot="493188d1fb079dfc70f246525473c128" Selector="[String.Format(&quot;&lt;wnd app='acme-system3.exe' ctrlname='{0}' /&gt;&lt;ctrl name='Close' role='push button' /&gt;&quot;, str_CloseSelector)]">
+                                <Assign sap:VirtualizedContainerService.HintSize="894.4,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[str_CloseSelector]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">[Tab.ToString]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <ui:UiElementExists DisplayName="Element Exists 'Tabs'" Exists="[bool_TabExist]" sap:VirtualizedContainerService.HintSize="894.4,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_6">
+                                  <ui:UiElementExists.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="9e797e3c-3f91-47c3-b13d-abbc24925998" InformativeScreenshot="493188d1fb079dfc70f246525473c128" Selector="[String.Format(&quot;&lt;wnd app='acme-system3.exe' ctrlname='{0}' /&gt;&lt;ctrl name='Close' role='push button' /&gt;&quot;, str_CloseSelector)]">
                                       <ui:Target.TimeoutMS>
                                         <InArgument x:TypeArguments="x:Int32" />
                                       </ui:Target.TimeoutMS>
@@ -199,25 +190,82 @@
                                         <InArgument x:TypeArguments="ui:WaitForReady" />
                                       </ui:Target.WaitForReady>
                                     </ui:Target>
-                                  </ui:Click.Target>
-                                </ui:Click>
+                                  </ui:UiElementExists.Target>
+                                </ui:UiElementExists>
+                                <If Condition="[bool_TabExist]" sap:VirtualizedContainerService.HintSize="894.4,732" sap2010:WorkflowViewState.IdRef="If_7">
+                                  <If.Then>
+                                    <Sequence sap:VirtualizedContainerService.HintSize="475.2,572.8" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="433.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Info" Message="[&quot;Tab &quot; + Tab.ToString + &quot; Found :')&quot;]" />
+                                      <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'acme-system3.exe ACME'" sap:VirtualizedContainerService.HintSize="433.6,347.2" sap2010:WorkflowViewState.IdRef="WindowScope_2" InformativeScreenshot="8bde376b3f641aeb18037e077879f61c" Selector="[String.Format(&quot;&lt;wnd app='acme-system3.exe' title='ACME System 3' ctrlname='{0}' /&gt;&quot;, str_CloseSelector)]">
+                                        <ui:WindowScope.Body>
+                                          <ActivityAction x:TypeArguments="x:Object">
+                                            <ActivityAction.Argument>
+                                              <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                                            </ActivityAction.Argument>
+                                            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,200" sap2010:WorkflowViewState.IdRef="Sequence_29">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                              <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Close Tabs'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_11" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="False">
+                                                <ui:Click.CursorPosition>
+                                                  <ui:CursorPosition Position="Center">
+                                                    <ui:CursorPosition.OffsetX>
+                                                      <InArgument x:TypeArguments="x:Int32" />
+                                                    </ui:CursorPosition.OffsetX>
+                                                    <ui:CursorPosition.OffsetY>
+                                                      <InArgument x:TypeArguments="x:Int32" />
+                                                    </ui:CursorPosition.OffsetY>
+                                                  </ui:CursorPosition>
+                                                </ui:Click.CursorPosition>
+                                                <ui:Click.Target>
+                                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="265b9fe1-b06e-4d73-a913-946d38534685" InformativeScreenshot="493188d1fb079dfc70f246525473c128" Selector="[String.Format(&quot;&lt;wnd app='acme-system3.exe' ctrlname='{0}' /&gt;&lt;ctrl name='Close' role='push button' /&gt;&quot;, str_CloseSelector)]" TimeoutMS="[CInt(in_ConfigFile(&quot;TimeOut_Short&quot;).ToString)]">
+                                                    <ui:Target.WaitForReady>
+                                                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                                                    </ui:Target.WaitForReady>
+                                                  </ui:Target>
+                                                </ui:Click.Target>
+                                              </ui:Click>
+                                            </Sequence>
+                                          </ActivityAction>
+                                        </ui:WindowScope.Body>
+                                      </ui:WindowScope>
+                                    </Sequence>
+                                  </If.Then>
+                                  <If.Else>
+                                    <Sequence sap:VirtualizedContainerService.HintSize="375.2,185.6" sap2010:WorkflowViewState.IdRef="Sequence_33">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="333.6,92.8" sap2010:WorkflowViewState.IdRef="LogMessage_20" Level="Info" Message="[&quot;Tab &quot; + Tab.ToString + &quot; Not Found :'(&quot;]" />
+                                    </Sequence>
+                                  </If.Else>
+                                </If>
+                                <Assign sap:VirtualizedContainerService.HintSize="894.4,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:Int32">[int_Counter]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:Int32">[int_Counter+1]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
                               </Sequence>
                             </ActivityAction>
-                          </ui:WindowScope.Body>
-                        </ui:WindowScope>
-                        <Assign sap:VirtualizedContainerService.HintSize="433.6,60" sap2010:WorkflowViewState.IdRef="Assign_7">
-                          <Assign.To>
-                            <OutArgument x:TypeArguments="x:Int32">[int_Counter]</OutArgument>
-                          </Assign.To>
-                          <Assign.Value>
-                            <InArgument x:TypeArguments="x:Int32">[int_Counter+1]</InArgument>
-                          </Assign.Value>
-                        </Assign>
+                          </ui:ForEach.Body>
+                        </ui:ForEach>
                       </Sequence>
                     </ui:InterruptibleWhile.Body>
                   </ui:InterruptibleWhile>
                 </Sequence>
-                <Sequence DisplayName="PostCondition" sap:VirtualizedContainerService.HintSize="836,647.2" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                <Sequence DisplayName="PostCondition" sap:VirtualizedContainerService.HintSize="1089.6,647.2" sap2010:WorkflowViewState.IdRef="Sequence_7">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:Boolean" Name="bool_PostCondition" />
                   </Sequence.Variables>
@@ -228,10 +276,7 @@
                   </sap:WorkflowViewStateService.ViewState>
                   <ui:UiElementExists DisplayName="Element Exists 'PostCondition'" Exists="[bool_PostCondition]" sap:VirtualizedContainerService.HintSize="794.4,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
                     <ui:UiElementExists.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="cc0cdd2a-d34c-46e5-b748-1b75b34b155b" InformativeScreenshot="53c0adcb67e1031683637125d1d896e8" Selector="&lt;wnd app='acme-system3.exe' ctrlname='Dashboard' /&gt;&lt;wnd ctrlname='label3' /&gt;">
-                        <ui:Target.TimeoutMS>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:Target.TimeoutMS>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="cc0cdd2a-d34c-46e5-b748-1b75b34b155b" InformativeScreenshot="53c0adcb67e1031683637125d1d896e8" Selector="&lt;wnd app='acme-system3.exe' ctrlname='Dashboard' /&gt;&lt;wnd ctrlname='label3' /&gt;" TimeoutMS="[CInt(in_ConfigFile(&quot;TimeOut_Short&quot;).ToString)]">
                         <ui:Target.WaitForReady>
                           <InArgument x:TypeArguments="ui:WaitForReady" />
                         </ui:Target.WaitForReady>
